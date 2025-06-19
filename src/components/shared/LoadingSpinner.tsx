@@ -1,0 +1,17 @@
+"use client";
+
+import { Loader2 } from 'lucide-react';
+
+export default function LoadingSpinner({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+  const sizeClasses = {
+    sm: "h-6 w-6",
+    md: "h-12 w-12",
+    lg: "h-24 w-24",
+  };
+  return (
+    <div className="flex justify-center items-center h-full w-full">
+      <Loader2 className={`animate-spin text-primary ${sizeClasses[size]}`} />
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
+}
