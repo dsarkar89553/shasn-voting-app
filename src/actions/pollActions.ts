@@ -65,9 +65,9 @@ export async function createPollAction(
       // if not solely relying on Firestore's onSnapshot for everything.
       // For this app, onSnapshot should handle dashboard button state updates.
       // revalidatePath('/dashboard'); 
-      return { success: true, message: 'Poll created successfully!', poll: newPoll };
+      return { success: true, message: 'Besi engrezi chudiyo na!', poll: newPoll };
     } else {
-      return { success: false, message: 'Failed to create poll. An active poll might already exist or a server error occurred.' };
+      return { success: false, message: 'Hoyni, abar chesta kor.' };
     }
   } catch (error) {
     console.error("Error creating poll:", error);

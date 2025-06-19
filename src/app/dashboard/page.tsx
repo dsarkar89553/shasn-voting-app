@@ -38,9 +38,9 @@ export default function DashboardPage() {
     <div className="space-y-8">
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="text-3xl font-headline text-center sm:text-left">Poll Master Dashboard</CardTitle>
+          <CardTitle className="text-3xl font-headline text-center sm:text-left">Shasn Voting</CardTitle>
           <CardDescription className="text-center sm:text-left">
-            Manage your polls or participate in active ones.
+            - Deep banaiche website ta bara.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -49,9 +49,9 @@ export default function DashboardPage() {
         <Card className="hover:shadow-xl transition-shadow duration-300">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline">
-              <PlusCircle className="text-primary" /> Create New Poll
+              <PlusCircle className="text-primary" /> Vote korbi ?
             </CardTitle>
-            <CardDescription>Start a new poll for users to vote on.</CardDescription>
+            <CardDescription>Nijer priyo sotrur jonno vote kor.</CardDescription>
           </CardHeader>
           <CardContent>
             <Button
@@ -61,7 +61,7 @@ export default function DashboardPage() {
               aria-label="Create New Poll"
             >
               {pollStatusLoading && activePollStatus?.isCreating ? <Loader2 className="animate-spin mr-2" /> : <PlusCircle className="mr-2 h-5 w-5" />}
-              {activePollStatus?.isCreating ? 'Creating...' : 'Create Poll'}
+              {activePollStatus?.isCreating ? 'Creating...' : 'Haa korbo'}
             </Button>
             {!canCreatePoll && !activePollStatus?.isCreating && (
               <p className="text-sm text-muted-foreground mt-2">
@@ -74,9 +74,9 @@ export default function DashboardPage() {
         <Card className="hover:shadow-xl transition-shadow duration-300">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline">
-              <Eye className="text-accent" /> View Active Poll
+              <Eye className="text-accent" /> Ongoing voting
             </CardTitle>
-            <CardDescription>See the current active poll and cast your vote.</CardDescription>
+            <CardDescription>Dekh kar gar mara jacche.</CardDescription>
           </CardHeader>
           <CardContent>
             <Button
@@ -86,11 +86,11 @@ export default function DashboardPage() {
               aria-label="View Active Poll"
             >
               {pollStatusLoading ? <Loader2 className="animate-spin mr-2" /> : <Eye className="mr-2 h-5 w-5" />}
-              View Poll
+              Dekhi
             </Button>
             {!canViewActivePoll && (
               <p className="text-sm text-muted-foreground mt-2">
-                No poll is currently active.
+                apatoto karo na.
               </p>
             )}
           </CardContent>
@@ -99,19 +99,19 @@ export default function DashboardPage() {
         <Card className="hover:shadow-xl transition-shadow duration-300">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline">
-              <Archive className="text-secondary-foreground" /> View Past Polls
+              <Archive className="text-secondary-foreground" /> Ager Garbazari
             </CardTitle>
-            <CardDescription>Browse through completed or deleted polls.</CardDescription>
+            <CardDescription>ager vote gulo dekhte paris.</CardDescription>
           </CardHeader>
           <CardContent>
             <Button
               onClick={() => router.push('/past-polls')}
               variant="secondary"
               className="w-full"
-              aria-label="View Past Polls"
+              aria-label="Ager gula dekhi"
             >
               <Archive className="mr-2 h-5 w-5" />
-              Past Polls
+              Ekhane Tep
             </Button>
           </CardContent>
         </Card>

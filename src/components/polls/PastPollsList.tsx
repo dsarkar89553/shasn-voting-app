@@ -45,7 +45,7 @@ export default function PastPollsList() {
     return (
       <Card className="shadow-lg text-center">
         <CardHeader>
-          <CardTitle className="text-2xl font-headline flex items-center justify-center gap-2"><Archive className="h-7 w-7 text-primary" />No Past Polls</CardTitle>
+          <CardTitle className="text-2xl font-headline flex items-center justify-center gap-2"><Archive className="h-7 w-7 text-primary" />Nai ager kichu</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">There are no ended or deleted polls to display yet.</p>
@@ -57,7 +57,7 @@ export default function PastPollsList() {
   return (
     <div className="space-y-6">
        <h1 className="text-3xl font-headline text-center mb-8 flex items-center justify-center gap-2">
-         <Archive className="h-8 w-8 text-primary" /> Past Polls
+         <Archive className="h-8 w-8 text-primary" /> Ager gula dekh
        </h1>
       {polls.map(poll => (
         <Card key={poll.id} className="shadow-md hover:shadow-xl transition-shadow duration-300">

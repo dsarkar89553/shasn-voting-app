@@ -30,7 +30,7 @@ function SubmitButton() {
   return (
     <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={pending}>
       {pending ? <Loader2 className="animate-spin mr-2" /> : <PlusCircle className="mr-2 h-5 w-5" />}
-      {pending ? 'Publishing...' : 'Publish Poll'}
+      {pending ? 'Publishing...' : 'Publish kor'}
     </Button>
   );
 }
@@ -89,29 +89,29 @@ export default function PollCreateForm() {
   return (
     <Card className="w-full max-w-lg mx-auto shadow-xl">
       <CardHeader>
-        <CardTitle className="text-3xl font-headline text-center">Create a New Poll</CardTitle>
-        <CardDescription className="text-center">Define your poll details and select participants. You are automatically included.</CardDescription>
+        <CardTitle className="text-3xl font-headline text-center">Notun Voting Bana</CardTitle>
+        <CardDescription className="text-center">50 jaygay oto description dite parbona.</CardDescription>
       </CardHeader>
       <CardContent>
         <form action={handleFormAction} className="space-y-6">
           <input type="hidden" name="creatorId" value={user.id} />
           
           <div className="space-y-2">
-            <Label htmlFor="pollName" className="flex items-center gap-2"><FileText className="h-5 w-5 text-primary"/>Poll Name</Label>
+            <Label htmlFor="pollName" className="flex items-center gap-2"><FileText className="h-5 w-5 text-primary"/>Koto number player</Label>
             <Input
               id="pollName"
               name="pollName"
               required
               minLength={3}
-              placeholder="e.g., Favorite Weekend Activity"
+              placeholder="e.g. prothom kheloyar"
               className="bg-background"
             />
             {state?.errors?.name && <p className="text-sm text-destructive">{state.errors.name.join(', ')}</p>}
           </div>
 
           <div className="space-y-2">
-            <Label className="flex items-center gap-2"><Users className="h-5 w-5 text-primary"/>Select other participants (min. 1)</Label>
-            <p className="text-xs text-muted-foreground -mt-1 mb-2">You, as the creator, are automatically included in the poll.</p>
+            <Label className="flex items-center gap-2"><Users className="h-5 w-5 text-primary"/>Ke Ke khelche ? (kom kore 3 jon)</Label>
+            <p className="text-xs text-muted-foreground -mt-1 mb-2">Tui, banacchis tai toke kheltei hbe.</p>
             <div className="space-y-2 max-h-60 overflow-y-auto rounded-md border p-4 bg-muted/30">
               {appUsers.map(participantUser => {
                 const isCreator = participantUser.id === user.id;
@@ -123,14 +123,14 @@ export default function PollCreateForm() {
                       value={participantUser.id}
                       checked={selectedParticipants.includes(participantUser.id)}
                       onCheckedChange={() => handleParticipantChange(participantUser.id)}
-                      aria-label={participantUser.displayName + (isCreator ? " (You - automatically included)" : "")}
+                      aria-label={participantUser.displayName + (isCreator ? " (Tui to khelbi e)" : "")}
                       // Creator checkbox is now clickable but their inclusion is guaranteed by backend
                     />
                     <Label 
                       htmlFor={`participant-${participantUser.id}`} 
                       className={`font-normal cursor-pointer flex-grow ${isCreator ? 'text-muted-foreground' : ''}`}
                     >
-                      {participantUser.displayName} {isCreator && "(You - automatically included)"}
+                      {participantUser.displayName} {isCreator && "(You - Tui to khelbi e)"}
                     </Label>
                   </div>
                 );

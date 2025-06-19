@@ -30,12 +30,12 @@ export default function ActivePollView({ pollId }: { pollId: string }) {
     try {
       const success = await submitVote(poll.id, user.id, participantId);
       if (success) {
-        toast({ title: 'Vote Submitted!', description: 'Your vote has been recorded.' });
+        toast({ title: 'Vote Submitted!', description: 'vote hoye geche.khusi thak.' });
       } else {
-        toast({ title: 'Vote Failed', description: 'Could not submit your vote. You might have already voted or an error occurred.', variant: 'destructive' });
+        toast({ title: 'Vote Failed', description: 'kono karone hoyni, refresh kore chesta kor.', variant: 'destructive' });
       }
     } catch (error) {
-      toast({ title: 'Error', description: 'An unexpected error occurred while voting.', variant: 'destructive' });
+      toast({ title: 'Error', description: 'kichu somossa hoiche bara.', variant: 'destructive' });
     }
     setIsSubmitting(false);
   };
@@ -46,13 +46,13 @@ export default function ActivePollView({ pollId }: { pollId: string }) {
     try {
       const success = await endPoll(poll.id, user.id);
       if (success) {
-        toast({ title: 'Poll Ended', description: 'The poll has been successfully ended.' });
+        toast({ title: 'Vote sesh', description: 'Sesh hoye geche bari ja.' });
         // Poll data will update via stream, showing results
       } else {
-        toast({ title: 'Failed to End Poll', description: 'Only the creator can end the poll or an error occurred.', variant: 'destructive' });
+        toast({ title: 'sesh hocche na', description: 'Je banay sudhu sei sesh korte pare.', variant: 'destructive' });
       }
     } catch (error) {
-      toast({ title: 'Error', description: 'An unexpected error occurred while ending the poll.', variant: 'destructive' });
+      toast({ title: 'Error', description: 'janina ki hoiche.', variant: 'destructive' });
     }
     setIsSubmitting(false);
   };
@@ -63,13 +63,13 @@ export default function ActivePollView({ pollId }: { pollId: string }) {
     try {
       const success = await deletePoll(poll.id, user.id);
       if (success) {
-        toast({ title: 'Poll Deleted', description: 'The poll has been successfully deleted.' });
+        toast({ title: 'voting Deleted', description: 'Voye paye delete kore dilam.' });
         router.push('/dashboard');
       } else {
-        toast({ title: 'Failed to Delete Poll', description: 'Only the creator can delete the poll or an error occurred.', variant: 'destructive' });
+        toast({ title: 'Delete hocche na', description: 'Je banay sudhu sei nosto korte pare.', variant: 'destructive' });
       }
     } catch (error) {
-      toast({ title: 'Error', description: 'An unexpected error occurred while deleting the poll.', variant: 'destructive' });
+      toast({ title: 'Error', description: 'janina bara.', variant: 'destructive' });
     }
     setIsSubmitting(false);
   };
@@ -79,11 +79,11 @@ export default function ActivePollView({ pollId }: { pollId: string }) {
   }
 
   if (errorPoll || errorVotes) {
-    return <div className="text-destructive text-center">Error loading poll data: {errorPoll?.message || errorVotes?.message}</div>;
+    return <div className="text-destructive text-center">Vote er data load kora jacchena apatoto: {errorPoll?.message || errorVotes?.message}</div>;
   }
 
   if (!poll) {
-    return <div className="text-center text-xl font-semibold mt-10">Poll not found or has been removed.</div>;
+    return <div className="text-center text-xl font-semibold mt-10">Vote hoyni ba khuje pacchina.</div>;
   }
   
   const isCreator = user?.id === poll.creatorId;
@@ -130,10 +130,10 @@ export default function ActivePollView({ pollId }: { pollId: string }) {
               ))}
             </div>
              {poll.participants.every(p => p.id === user.id) && (
-                <p className="text-muted-foreground text-center mt-4">You are the only participant, no one to vote for.</p>
+                <p className="text-muted-foreground text-center mt-4">Eka khelte parbi bara ?</p>
             )}
              {!poll.participants.some(p => p.id !== user.id) && poll.participants.length > 0 && (
-                <p className="text-muted-foreground text-center mt-4">No other participants to vote for.</p>
+                <p className="text-muted-foreground text-center mt-4">Vote kake korbi ?keu e to nai.</p>
             )}
           </div>
         )}
@@ -142,14 +142,14 @@ export default function ActivePollView({ pollId }: { pollId: string }) {
           <div className="text-center p-4 bg-green-50 border border-green-200 rounded-md">
             <CheckCircle2 className="h-8 w-8 text-green-600 mx-auto mb-2" />
             <p className="font-semibold text-green-700">You have voted for {poll.participants.find(p => p.id === userVotedParticipantId)?.displayName || 'a participant'}.</p>
-            <p className="text-sm text-green-600">Results will be shown once the poll ends.</p>
+            <p className="text-sm text-green-600">Sesh hole dekhte pabi.</p>
           </div>
         )}
         
         {poll.status === 'ended' && (
            <div>
             <h3 className="text-xl font-semibold mb-4 text-center text-primary flex items-center justify-center gap-2">
-              <BarChart3 className="h-6 w-6" />Poll Results
+              <BarChart3 className="h-6 w-6" />Results
             </h3>
             <ul className="space-y-3">
               {poll.participants.sort((a, b) => (voteCounts[b.id] || 0) - (voteCounts[a.id] || 0)).map((participant: PollParticipant) => (
@@ -168,15 +168,15 @@ export default function ActivePollView({ pollId }: { pollId: string }) {
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="outline" className="w-full sm:w-auto border-destructive text-destructive hover:bg-destructive/10" disabled={isSubmitting}>
-                <Ban className="mr-2 h-5 w-5" /> End Poll
+                <Ban className="mr-2 h-5 w-5" /> vote sesh kori
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
-              <AlertDialogHeader><AlertDialogTitle>End Poll?</AlertDialogTitle></AlertDialogHeader>
-              <AlertDialogDescription>Are you sure you want to end this poll? This action will reveal the votes and cannot be undone.</AlertDialogDescription>
+              <AlertDialogHeader><AlertDialogTitle>End Voting?</AlertDialogTitle></AlertDialogHeader>
+              <AlertDialogDescription>Tui ki sotti e voting sesh korte chas?</AlertDialogDescription>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={handleEndPoll} className="bg-destructive hover:bg-destructive/90">End Poll</AlertDialogAction>
+                <AlertDialogCancel>na</AlertDialogCancel>
+                <AlertDialogAction onClick={handleEndPoll} className="bg-destructive hover:bg-destructive/90">sesh kori</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
@@ -187,15 +187,15 @@ export default function ActivePollView({ pollId }: { pollId: string }) {
            <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button variant="destructive" className="w-full sm:w-auto" disabled={isSubmitting}>
-                <Trash2 className="mr-2 h-5 w-5" /> Delete Poll
+                <Trash2 className="mr-2 h-5 w-5" /> voy paye gechi
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
-              <AlertDialogHeader><AlertDialogTitle>Delete Poll?</AlertDialogTitle></AlertDialogHeader>
-              <AlertDialogDescription>Are you sure you want to delete this poll? This will mark it as deleted and it will appear in past polls. This cannot be undone.</AlertDialogDescription>
+              <AlertDialogHeader><AlertDialogTitle>Delete korbi?</AlertDialogTitle></AlertDialogHeader>
+              <AlertDialogDescription>Keno re gar faite geche naki?</AlertDialogDescription>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={handleDeletePoll} className="bg-destructive hover:bg-destructive/90">Delete Poll</AlertDialogAction>
+                <AlertDialogCancel>Bal</AlertDialogCancel>
+                <AlertDialogAction onClick={handleDeletePoll} className="bg-destructive hover:bg-destructive/90">Ha onekta</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>

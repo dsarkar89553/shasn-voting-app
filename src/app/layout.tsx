@@ -5,8 +5,8 @@ import { Toaster } from '@/components/ui/toaster';
 import AppNavbar from '@/components/shared/AppNavbar';
 
 export const metadata: Metadata = {
-  title: 'Poll Master',
-  description: 'Create and participate in polls seamlessly.',
+  title: 'Shasn Voting',
+  description: 'Created by Deep.',
 };
 
 export default function RootLayout({
