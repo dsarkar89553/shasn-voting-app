@@ -11,7 +11,7 @@ export const appUsers: AppUser[] = [
 ];
 
 export const findUserByUsername = (username: string): AppUser | undefined => {
-  return appUsers.find(user => user.username === username);
+  return appUsers.find(user => user.username.toLowerCase() === username);
 };
 
 export const findUserById = (id: string): AppUser | undefined => {

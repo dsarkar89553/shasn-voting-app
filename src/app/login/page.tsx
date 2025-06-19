@@ -20,7 +20,7 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const success = await login(username, password);
+    const success = await login(username.toLowerCase(), password);
     if (!success) {
       toast({
         title: 'Login Failed',
