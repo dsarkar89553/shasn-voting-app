@@ -1,13 +1,13 @@
 import type { AppUser } from '@/types';
 
 export const appUsers: AppUser[] = [
-  { id: 'user1', username: 'alpha', password: 'password1', displayName: 'Alpha Player' },
-  { id: 'user2', username: 'bravo', password: 'password2', displayName: 'Bravo Player' },
-  { id: 'user3', username: 'charlie', password: 'password3', displayName: 'Charlie Player' },
-  { id: 'user4', username: 'delta', password: 'password4', displayName: 'Delta Player' },
-  { id: 'user5', username: 'echo', password: 'password5', displayName: 'Echo Player' },
-  { id: 'user6', username: 'foxtrot', password: 'password6', displayName: 'Foxtrot Player' },
-  { id: 'user7', username: 'golf', password: 'password7', displayName: 'Golf Player' },
+  { id: 'user1', username: 'deep', password: '7478042391', displayName: 'Deep' },
+  { id: 'user2', username: 'rupam', password: '7479296598', displayName: 'Antenna Babu' },
+  { id: 'user3', username: 'biswa', password: '7001010937', displayName: 'Badshah Das' },
+  { id: 'user4', username: 'papan', password: '9907464734', displayName: 'papan' },
+  { id: 'user5', username: 'aritra', password: '7063602550', displayName: 'Dhopash' },
+  { id: 'user6', username: 'niloy', password: '8116270439', displayName: 'Niloy' },
+  { id: 'user7', username: 'bishal', password: '9382428466', displayName: 'Bishal' },
 ];
 
 export const findUserByUsername = (username: string): AppUser | undefined => {
